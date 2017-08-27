@@ -85,7 +85,6 @@ module.exports = function(app, passport){
     // Now that the user is created, we'll attempt to save them to the
     // database.
     user.save(function(err, user){
-
       // If there is an error, it will come with some special codes and
       // information. We can customize the printed message based on
       // the error mongoose encounters
@@ -104,11 +103,12 @@ module.exports = function(app, passport){
         // Flash the message and redirect to the login view to
         // show it.
         req.flash('info', errMsg);
+      } else {
+        req.flash('info', 'Your account was successfully created. Enter using those credentials');
       }
 
-      req.flash('info', 'Your account was successfully created. Enter using those credentials');
-      // If we make it this far, we are ready to log the user in.
       return res.redirect('/signin');
+
     });
   }),
 

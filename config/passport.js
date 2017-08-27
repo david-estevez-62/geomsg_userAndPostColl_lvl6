@@ -74,10 +74,6 @@ var localSignIn = new LocalStrategy({
     // Check to see if user is in the database
     User.findOne({'username':username}, function(err, user){
 
-      ////////////////////////////
-      // console.log(arguments) //
-      ////////////////////////////
-
       if (err) return next(err);
 
       // If user is not found...
@@ -87,10 +83,7 @@ var localSignIn = new LocalStrategy({
 
       user.comparePassword(password, function(err, isMatch){
 
-      ////////////////////////////
-      // console.log(arguments) //
-      ////////////////////////////
-      ///
+
         if (err) return next(err);
 
         // Passwords don't match...
